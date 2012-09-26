@@ -2,7 +2,7 @@
     //Nov 6, 2012 12:01 am
 
     var targetTime = new Date(2012, 10, 6, 0, 1),
-
+ 
     // digits 0 through 9
     segments = [
             ["t", "tl", "bl", "b", "br", "tr"],
@@ -16,18 +16,27 @@
             ["t", "tl", "bl", "b", "br", "tr", "m"],
             ["t", "tl", "b", "br", "tr", "m"]
         ],
-        $container, digitWidth = 25;
+    $container, digitWidth = 25,
+
+    // offset and interval in deciseconds
+    offset = 0, maxOffset = 50, interval = 10;
 
     $(function() {
         $container = $(".timer");
-        setInterval(Countdown.refreshTimer, 1000);
+	setInterval(Countdown.refreshTimer, 100);
         Countdown.refreshTimer();
     });
 
     Countdown.refreshTimer = function ()
     {
+	if (interval > 0) {
+	    interval--;
+	    return;
+	}
+
         $container.find(".digit").remove();
-        var timeRemaining = (targetTime.getTime() - new Date().getTime()) / 1000;
+
+	var timeRemaining = ((targetTime.getTime() - new Date().getTime()) / 1000) + offset/10;
         var daysRemaining = 0;
         var hoursRemaining = 0;
         var minutesRemaining = 0;
@@ -49,6 +58,13 @@
         Countdown.drawNumberString(frontPad(hoursRemaining, 2), 132, 2);
         Countdown.drawNumberString(frontPad(minutesRemaining, 2), 212, 1);
         Countdown.drawNumberString(frontPad(secondsRemaining, 2), 291, 0);
+
+	// Determine interval until next tick
+	if (Math.floor(Math.random()*10+1) > 8) {
+	    interval = 20;
+	} else {
+	    interval = 10;
+	}
     };
 
     frontPad = function (number, digits)
