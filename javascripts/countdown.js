@@ -61,11 +61,11 @@
 
 	var chance = Math.floor(Math.random()*100+1);
 	console.log(chance);
-	if (chance > 95) {
+	if (chance > 97) {
 	    // Skip a tick
 	    // console.log("skip");
 	    interval = 20;
-	} else if (chance < 20) {
+	} else if (chance < 10) {
 	    // More likely to slow down if offset near ceiling,
 	    // and more likely to speed up offset near floor.
 	    var direction = Math.floor(Math.random()*2*maxOffset-maxOffset+1);
