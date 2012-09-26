@@ -19,7 +19,7 @@
     $container, digitWidth = 25,
 
     // offset and interval in deciseconds
-    offset = 0, maxOffset = 50, interval = 10;
+    offset = 0, maxOffset = 50, interval = 0;
 
     $(function() {
         $container = $(".timer");
