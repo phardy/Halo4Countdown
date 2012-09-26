@@ -59,8 +59,10 @@
         Countdown.drawNumberString(frontPad(minutesRemaining, 2), 212, 1);
         Countdown.drawNumberString(frontPad(secondsRemaining, 2), 291, 0);
 
-	// Determine interval until next tick
-	if (Math.floor(Math.random()*10+1) > 8) {
+	var chance = Math.floor(Math.random()*10+1);
+	console.log(chance);
+	if (chance > 9) {
+	    // Skip a tick
 	    interval = 20;
 	} else {
 	    interval = 10;
