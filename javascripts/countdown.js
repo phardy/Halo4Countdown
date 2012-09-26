@@ -63,23 +63,24 @@
 	console.log(chance);
 	if (chance > 95) {
 	    // Skip a tick
+	    // console.log("skip");
 	    interval = 20;
 	} else if (chance < 20) {
 	    // More likely to slow down if offset near ceiling,
 	    // and more likely to speed up offset near floor.
 	    var direction = Math.floor(Math.random()*2*maxOffset-maxOffset+1);
-	    console.log(direction);
 	    if (direction < offset) {
 		offset = Math.max(offset-3, maxOffset*-1);
 		interval = 13;
-		console.log("slower");
+		// console.log("slower");
 	    } else {
 		offset = Math.min(offset+2, maxOffset);
 		interval = 7;
-		console.log("faster");
+		// console.log("faster");
 	    }
 	} else {
 	    // Regular tick
+	    // console.log("normal");
 	    interval = 10;
 	}
     };
