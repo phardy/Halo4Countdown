@@ -1,0 +1,40 @@
+@import "compass/reset";
+@import "compass/css3/images";
+@import "compass/typography/text/replacement";
+
+@import "segment/*.png";
+
+@include all-segment-sprites;
+
+.countdown {
+    @include replace-text-with-dimensions("h4-blank.jpg");
+    &.debug {
+    @include replace-text-with-dimensions("h4.jpg");
+    }
+}
+
+.timer {
+    width: 300px;
+    height: 100px;
+    /*background-color: #c00;*/
+    position: relative;
+    top: 400px;
+    left: 130px;
+}
+
+.digit {
+    width: 23px;
+    height: 35px;
+    float: left;
+    margin-right: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    div {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 23px;
+        height: 35px;
+    }
+}
